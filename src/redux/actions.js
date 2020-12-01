@@ -14,14 +14,30 @@ export const setImage = (inc) => ({ type: "setImage", payload: inc })
 export const setHealth = (inc) => ({ type: "setHealth", payload: inc })
 export const setInit = (inc) => ({ type: "INIT", payload: inc })
 export const vis = (inc) => ({ type: "VIS", payload: inc })
+export const setChar = (inc) => ({ type: "setChar", payload: inc })
+export const resetChar = (inc) => ({ type: "resetChar", payload: inc })
+export const incLevel = (inc) => ({ type: "level", payload: inc })
+export const incProf = (inc) => ({ type: "prof", payload: inc })
+export const setId = (inc) => ({ type: "setId", payload: inc })
+export const changeChar = (inc) => ({ type: "changeChar", payload: inc })
 
 
 export const getCharacter=()=>{
     return function(dispatch){
         fetch("http://localhost:3000/api/v1/characters/1")
         .then(resp=>resp.json())
-        .then(data=>{console.log(data)
+        .then(data=>{
             dispatch({type:"fetchChar",payload:data.data.attributes})})
+    }
+}
+
+export const getSkills = () => {
+    return function (dispatch) {
+        fetch("http://localhost:3000/api/v1/skills")
+            .then(resp => resp.json())
+            .then(data => {
+                dispatch({ type: "fetchSkills", payload: data.data })
+            })
     }
 }
 
@@ -30,7 +46,7 @@ export const getCharacters = () => {
         fetch("http://localhost:3000/api/v1/users/1")
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                
                 dispatch({ type: "fetchChars", payload: data.data.attributes.characters })
             })
     }
@@ -41,7 +57,7 @@ export const getSpells = () => {
         fetch("http://localhost:3000/api/v1/spells")
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                
                 dispatch({ type: "fetchSpells", payload: data.data })
             })
     }
@@ -52,7 +68,7 @@ export const getCharSpells = () => {
         fetch("http://localhost:3000/api/v1/characters/1")
             .then(resp => resp.json())
             .then(data => {
-                console.log(data)
+                
                 dispatch({ type: "fetchCharSpells", payload: data.data.attributes.spells })
             })
     }
@@ -79,7 +95,7 @@ export const getClasses = () => {
 }
 
 export const postCharacter = (char) => {
-    console.log(JSON.stringify({character:char}))
+    
     return function (dispatch) {
         fetch("http://localhost:3000/api/v1/characters", {
             method: "POST",
@@ -114,6 +130,54 @@ export const postCharacter = (char) => {
             .then(resp => resp.json())
             .then(data => {
                 dispatch({ type: "postChar", payload: data.data.attributes })
+                dispatch({ type: "resetChar", payload: '' })
+            })
+    }
+}
+
+export const patchCharacter = (char,charId) => {
+    console.log(char,charId)
+    return function (dispatch) {
+        fetch(`http://localhost:3000/api/v1/characters/${charId}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json",
+                accepts: "application/json"
+            },
+            body: JSON.stringify({
+                character:
+                {
+                    health: char.health,
+                    strength: char.strength,
+                    wisdom: char.wisdom,
+                    dexterity: char.dexterity,
+                    intelligence: char.intelligence,
+                    charisma: char.charisma,
+                    constitution: char.constitution,
+                    level: char.level,
+                    image: char.image,
+                    darkvision: char.darkvision,
+                    speed: char.speed,
+                    proficiency: char.proficiency,
+                    name: char.name,
+                    class_type: char.class_type,
+                    race: char.race,
+                    armor: char.armor,
+                    initiative: char.initiative,
+                    user_id: 1
+                }
+            }
+            )
+        }
+
+        )
+            .then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+                dispatch({ type: "changeChar", payload: data.data.attributes })
+                dispatch({ type: "setChar", payload: data.data.attributes })
+
+                
             })
     }
 }

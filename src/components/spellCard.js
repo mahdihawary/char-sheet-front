@@ -5,7 +5,7 @@ import React from 'react'
 
 function SpellCard({ spell }) {
 
-    console.log(spell)
+
     return (
         <div>
             <h3>name:{spell.attributes.name}</h3>

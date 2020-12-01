@@ -1,4 +1,3 @@
-import { Button } from '@material-ui/core'
 import {combineReducers} from 'redux'
 
 const defaultState={
@@ -28,7 +27,10 @@ const defaultState={
     classTypes:[],
     characters:[],
     spells:[],
-    charSpells:[]
+    charSpells:[],
+    skills:[],
+    abilities:[],
+    charId:0
 }
 
 function userReducer(state=defaultState.user, action){
@@ -44,8 +46,13 @@ function charIndexReducer(state = defaultState.characters, action) {
     switch (action.type) {
         case "fetchChars":
             return action.payload
-            case "postChar":
-                return [...state,action.payload]
+        case "postChar":
+            return [...state,action.payload]
+        case "changeChar":
+            let newChars = [...state]
+            let index = newChars.findIndex(x => x.id === action.payload.id)
+            newChars[index] = action.payload
+            return newChars 
 
         default:
             return state
@@ -56,6 +63,16 @@ function charIndexReducer(state = defaultState.characters, action) {
 function spellsReducer(state = defaultState.spells, action) {
     switch (action.type) {
         case "fetchSpells":
+            return action.payload
+
+        default:
+            return state
+    }
+}
+
+function skillsReducer(state = defaultState.skills, action) {
+    switch (action.type) {
+        case "fetchSkills":
             return action.payload
 
         default:
@@ -74,7 +91,7 @@ function charSpellsReducer(state = defaultState.charSpells, action) {
 }
 
     function charReducer(state = defaultState.character, action) {
-        console.log(action.type)
+        console.log( state)
         switch (action.type) {
             case "post":
                 return action.payload
@@ -95,6 +112,7 @@ function charSpellsReducer(state = defaultState.charSpells, action) {
             case "setRace":
                 return { ...state, race: action.payload }
             case "setClass":
+                console.log("in case")
                 return{...state, class_type: action.payload}
             case "VIS":
                 return { ...state, darkvision: action.payload }
@@ -108,7 +126,14 @@ function charSpellsReducer(state = defaultState.charSpells, action) {
                 return { ...state, health: action.payload }
             case "INIT":
                 return { ...state, initiative: action.payload }
-
+            case "resetChar":
+                return defaultState.character
+            case "setChar":
+                return action.payload
+            case "level":
+                return { ...state, level: state.level+1}
+            case "prof":
+                return { ...state, proficiency: state.proficiency + 1 }
             default:
                 return state
         }
@@ -117,7 +142,6 @@ function charSpellsReducer(state = defaultState.charSpells, action) {
 function racesReducer(state = defaultState.races, action) {
     switch (action.type) {
         case "fetchRaces":
-            console.log(action.payload)
             return action.payload
 
         default:
@@ -129,6 +153,16 @@ function racesReducer(state = defaultState.races, action) {
 function classReducer(state = defaultState.classTypes, action) {
     switch (action.type) {
         case "fetchClasses":
+            return action.payload
+
+        default:
+            return state
+    }
+}
+
+function charIdReducer(state = defaultState.charId, action) {
+    switch (action.type) {
+        case "setId":
             return action.payload
 
         default:
@@ -155,7 +189,9 @@ const rootReducer = combineReducers({
     classTypes:classReducer,
     characters:charIndexReducer,
     spells:spellsReducer,
-    charSpells:charSpellsReducer
+    charSpells:charSpellsReducer,
+    skills:skillsReducer,
+    CharId: charIdReducer
 })
 
 export default rootReducer

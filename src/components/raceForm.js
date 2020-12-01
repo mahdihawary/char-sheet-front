@@ -3,7 +3,6 @@ import{connect}from 'react-redux'
 import RaceCard from './raceCard'
 
 function RaceForm({races, character, submitHandler}){
-console.log(races)
 const renderRaces=()=>{
     return races.map(race => <RaceCard race={race} key={race.attributes.name} topSubmitHandler={submitHandler}/>)
 }

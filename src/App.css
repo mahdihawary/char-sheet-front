@@ -1,8 +1,136 @@
 .App {
   text-align: center;
+  background-color: #4c6470;
 }
 
 .charImage{
   max-width: 100%;
   height: auto;
+}
+
+.logo{
+  height: 75px;
+  padding-bottom: 5px;
+}
+
+.navo{
+  padding-bottom: 100px;
+}
+
+.naver{
+  background-color: #4c6470;
+  display: flex;
+}
+
+.drawer{
+  background-color: #4c6470;
+}
+
+
+.container {
+  width: 50%;
+  margin: 2em auto;
+}
+  .header {
+    text-align: center;
+    color: #333;
+  }
+  .results-container {
+    text-align: center;
+  }
+  .result-box {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 100px;
+      font-size: 50px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+      color: #333;
+      background: #fefefe;
+    }
+  
+  .dice-container {
+    text-align: center;
+    margin: 20px 0;
+  }
+    .die {
+      color: #fefefe;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+      font-size: 1.5em;
+      border-radius: 10px;
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+      margin: 5px;
+      border: 0;
+      background: #2ecc71;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+      cursor: pointer;
+    }
+
+      .die:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+0 3px 6px rgba(0, 0, 0, 0.23);
+        background: darken(#2ecc71, 10%);
+      }
+    
+  
+  .multiplier-container {
+    text-align: center;
+  }
+    .multiplier {
+      width: 100px;
+      text-align: center;
+      font-size: 1.5em;
+      padding: 0.5em 0;
+      border-radius: 10px;
+      box-shadow:  0 1px 3px rgba(0, 0, 0, 0.12),
+0 1px 2px rgba(0, 0, 0, 0.24);
+      border: none;
+      background:  #fefefe;
+      transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+      color: #333;
+    }
+      .multiplier:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      .dice-roll-container{
+        padding-bottom: 75vh;
+      }
+
+      a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.charcard{
+  padding-bottom: 10px;
+}
+
+button {
+  background-color: #6772e5;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 7px 14px;
+}
+button:hover {
+  background-color: #5469d4;
+}
+
+.charPaper{
+  text-align: center;
+  padding: 25px;
 }
