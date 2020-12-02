@@ -1,9 +1,29 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import SpellCard from '../components/spellCard'
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
+const useRowStyles = makeStyles({
+    root: {
+        '& > *': {
+            borderBottom: 'unset',
+        },
+    },
+});
+
+
 
 
 const SpellsContainer = ({ spells, classT, level}) => {
+    console.log(spells)
 
 
 
@@ -19,27 +39,27 @@ const SpellsContainer = ({ spells, classT, level}) => {
     const ninthSpell = () => { return classSpells().filter(spell => spell.attributes.level <= 9)}
 
     const levelSpells=()=>{
-        switch(level){
-            case 1:
-                return firstSpell()
-            case 2:
-                return secondSpell()
-            case 3:
-                return thirdSpell()
-            case 4:
-                return fourthSpell()
-            case 5:
-                return fifthSpell()
-            case 6:
-                return sixthSpell()
-            case 7:
-                return seventhSpell()
-            case 8:
-                return eighthSpell()
-            case 9:
+        switch(true){
+            case level >= 20:
                 return ninthSpell()
-                default:
-                    break;
+            case level >= 18:
+                return eighthSpell()
+            case level >= 16:
+                return seventhSpell()
+            case level >= 13:
+                return sixthSpell()
+            case level >= 10:
+                return fifthSpell()
+            case level >= 7:
+                return fourthSpell()
+            case level >= 4:
+                return thirdSpell()
+            case level >= 2:
+                return secondSpell()
+            case level>=1:
+                return firstSpell()
+            default:
+                return []
         }
     }
 
@@ -50,7 +70,21 @@ const SpellsContainer = ({ spells, classT, level}) => {
 
     return (
         <div>
-            {renderSpells()}
+            <TableContainer component={Paper}>
+                <Table aria-label="collapsible table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell />
+                            <TableCell>Name</TableCell>
+                            <TableCell >Spell Level</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {renderSpells()}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+           
         </div>
     )
 }

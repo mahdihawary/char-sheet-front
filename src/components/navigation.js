@@ -25,6 +25,11 @@ import { Box, Button, Container } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { purple } from '@material-ui/core/colors';
 import { FullscreenExit } from '@material-ui/icons';
+import { resetChar } from '../redux/actions';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {   faDiceD20 } from '@fortawesome/free-solid-svg-icons';
+
 
 const drawerWidth = 200;
 
@@ -59,7 +64,7 @@ const useStyles = makeStyles({
 });
 
 
-function Navigation(){
+function Navigation({localResetChar}){
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -76,6 +81,9 @@ function Navigation(){
         setState({ ...state, [anchor]: open });
     };
 
+    const clickHandler=()=>{
+        localResetChar()
+    }
 
     const list = (anchor) => (
         <div
@@ -87,9 +95,9 @@ function Navigation(){
             onKeyDown={toggleDrawer(anchor, false)}
         >
             <List>
-                <NavLink to="/"><ListItem button ><ListItemIcon><HomeIcon /></ListItemIcon><ListItemText primary="Home" /></ListItem></NavLink>
+                <NavLink to="/" ><ListItem button ><ListItemIcon><FontAwesomeIcon icon={faDiceD20} /></ListItemIcon><ListItemText primary="Home" /></ListItem></NavLink>
                 <NavLink to="/characters"><ListItem button ><ListItemIcon><PeopleIcon /></ListItemIcon><ListItemText primary="Characters" /></ListItem></NavLink>
-                <NavLink to="/creator"><ListItem button ><ListItemIcon><PersonAddIcon /></ListItemIcon><ListItemText primary="Create" /></ListItem></NavLink>
+                <NavLink to="/creator" onClick={clickHandler}><ListItem button ><ListItemIcon><PersonAddIcon /></ListItemIcon><ListItemText primary="Create" /></ListItem></NavLink>
             </List>
         </div>
     );
@@ -133,5 +141,6 @@ function Navigation(){
     )
 
 }
+const mapDispatchToProps = (dispatch) => { return { localResetChar: () => dispatch(resetChar())}}
 
-export default Navigation
+export default connect(null, mapDispatchToProps)(Navigation)

@@ -76,32 +76,77 @@ function CharShow({character}){
     <Paper elevation={5}>
     <Grid container className={classes.root}>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <Grid container className={classes.root}>
-                            <Grid item xs={12}>
-                        <h2>{character.name}</h2>
-                            </Grid>
-                            <Grid item xs={12}>
-                        <h4>Level {character.level} {character.race} {character.class_type}</h4>
+                    <Grid container className={classes.root}>
+                        <Grid item xs={12}>
+                        <h1>{character.name}</h1>
                         </Grid>
-                            <Grid item xs={3}>
-                        <img src={character.image} alt="" className="charImage" />
-                        </Grid>
-                        </Grid>
-                        
-                    </Paper>
+                        <Grid item xs={12}>
+                                <h2> {character.race} {character.class_type} Level {character.level}</h2>
+                        </Grid> 
+                    </Grid>
                 </Grid>
 
-            <Grid item xs={3}>
-                <h3>Ability Scores</h3>
-                <h4>Strength: {character.strength}</h4>
-                <h4>Wisdom: {character.wisdom}</h4>
-                <h4>Constitution: {character.constitution}</h4>
-                <h4>Intelligence: {character.intelligence}</h4>
-                <h4>Dexterity: {character.dexterity}</h4>
-                <h4>Charisma: {character.charisma}</h4>
+                <Grid item width={25} xs={3}>
+                    <img src={character.image} alt="" className="charImage" />
+                </Grid>
+            <Grid item xs={9}>
+                    <Grid container  >
+                        <Grid item xs={12}>
+                <h2>Ability Scores</h2>
+                </Grid>
+                        <Grid item xs={4} spacing={0}>
+                <h3>STR</h3>
+                <p>{character.strength}</p>
+                            </Grid>
+                        <Grid item xs={4}>
+                <h3>WIS</h3>
+                <p>{character.wisdom}</p>
+                </Grid>
+            <Grid item xs={4}>
+                <h3>CON </h3>
+                <p>{character.constitution}</p>
+                </Grid>
+                <Grid item xs={4}>
+                <h3>INT </h3>
+                <p>{character.intelligence}</p>
+                </Grid>
+                <Grid item xs={4}>
+                <h3>DEX</h3>
+                <p>{character.dexterity}</p>
+                </Grid>
+                <Grid item xs={4}>
+                <h3>CHA </h3>
+                <p>{character.charisma}</p>
+                </Grid>
+                </Grid>
             </Grid>
-                <Grid item xs={3}>
+
+            <Grid item xs={12}>
+                    <h2>Stats</h2>
+                    <Grid container >
+                        <Grid xs={3}></Grid>
+                        <Grid item xs={3}>
+                            <h3>Darkvision</h3>
+                            <p>{character.darkvision} ft</p>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <h3>speed:</h3>
+                            <p>{character.speed} ft</p>
+                        </Grid>
+                        <Grid xs={3}></Grid>
+                        <Grid xs={3}></Grid>
+                        <Grid item xs={3}>
+                            <h3>proficiency</h3>
+                            <p>+{character.proficiency}</p>
+                        </Grid>
+                        {/* <h3>AC: {character.armor}</h3> */}
+                        <Grid item xs={3}>
+                            <h3>Initiative</h3>
+                            <p>+{Math.floor((character.dexterity - 10) / 2 + character.proficiency) }</p>
+                        </Grid>
+                    </Grid>
+            </Grid>
+                {/* <Grid item xs={3}>
                     <h3>Saving throws</h3>
                     <h4>Strength: {Math.floor((character.strength-10)/2+character.proficiency)}</h4>
                     <h4>Wisdom: {Math.floor((character.wisdom-10)/2+character.proficiency)}</h4>
@@ -109,39 +154,91 @@ function CharShow({character}){
                     <h4>Intelligence: {Math.floor((character.intelligence-10)/2+character.proficiency)}</h4>
                     <h4>Dexterity: {Math.floor((character.dexterity-10)/2+character.proficiency)}</h4>
                     <h4>Charisma: {Math.floor((character.charisma-10)/2+character.proficiency)}</h4>
+                </Grid> */}
+                <Grid item xs={12}>
+                    <h2>Skills</h2>
+                    <Grid container>
+                    <Grid item xs={3}>
+                        <h4>Acrobatics</h4>
+                    <p>{proficiencies.includes('acro') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <h4>Animal Handling</h4>
+                    <p>{proficiencies.includes('ani') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Arcana</h4>
+                    <p>{proficiencies.includes('arc') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Athletics</h4>
+                    <p>{proficiencies.includes('ath') ? Math.floor((character.strength - 10) / 2 + character.proficiency) : Math.floor((character.strength - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Deception</h4>
+                    <p>{proficiencies.includes('dece') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>History</h4>
+                    <p>{proficiencies.includes('his') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Insight</h4>
+                    <p>{proficiencies.includes('ins') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Intimidation</h4>
+                    <p>{proficiencies.includes('inti') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Investigation</h4>
+                    <p>{proficiencies.includes('inve') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Medicine</h4>
+                    <p>{proficiencies.includes('medi') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Nature</h4>
+                    <p>{proficiencies.includes('natu') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Perception</h4>
+                    <p>{proficiencies.includes('perc') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Performance</h4>
+                    <p>{proficiencies.includes('perf') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Persuasion</h4>
+                    <p>{proficiencies.includes('pers') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Religion</h4>
+                    <p>{proficiencies.includes('rel') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Sleight of Hand</h4>
+                    <p>{proficiencies.includes('hand') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
+                    </Grid>
+                        <Grid xs={3}></Grid>
+                    <Grid item xs={3}>
+                            <h4>Stealth</h4>
+                    <p>{proficiencies.includes('stealth') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
+                    </Grid>
+                    <Grid item xs={3}>
+                            <h4>Survival</h4>
+                    <p>{proficiencies.includes('surv') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
+                    </Grid>
+                    </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                    <h3>Skills</h3>
-                    <h4>Acrobatics: {proficiencies.includes('acro') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</h4>
-                    <h4>Animal Handling: {proficiencies.includes('ani') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</h4>
-                    <h4>Arcana: {proficiencies.includes('arc') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</h4>
-                    <h4>Athletics: {proficiencies.includes('ath') ? Math.floor((character.strength - 10) / 2 + character.proficiency) : Math.floor((character.strength - 10) / 2)}</h4>
-                    <h4>Deception: {proficiencies.includes('dece') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</h4>
-                    <h4>History: {proficiencies.includes('his') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</h4>
-                    <h4>Insight: {proficiencies.includes('ins') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</h4>
-                    <h4>Intimidation: {proficiencies.includes('inti') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</h4>
-                    <h4>Investigation: {proficiencies.includes('inve') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</h4>
-                    <h4>Medicine: {proficiencies.includes('medi') ? Math.floor((character.intelligence - 10) / 2 + character.proficiency) : Math.floor((character.intelligence - 10) / 2)}</h4>
-                    <h4>Nature: {proficiencies.includes('natu') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</h4>
-                    <h4>Perception: {proficiencies.includes('perc') ? Math.floor((character.wisdom - 10) / 2 + character.proficiency) : Math.floor((character.wisdom - 10) / 2)}</h4>
-                    <h4>Performance: {proficiencies.includes('perf') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</h4>
-                    <h4>Persuasion: {proficiencies.includes('pers') ? Math.floor((character.charisma - 10) / 2 + character.proficiency) : Math.floor((character.charisma - 10) / 2)}</h4>
-                    <h4>Religion: {proficiencies.includes('rel') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</h4>
-                    <h4>Sleight of Hand: {proficiencies.includes('hand') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</h4>
-                    <h4>Stealth: {proficiencies.includes('stealth') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</h4>
-                    <h4>Survival: {proficiencies.includes('surv') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</h4>
-                </Grid>
-            <Grid item xs={3}>
-                <h4>Darkvision:{character.darkvision}</h4>
-                <h4>speed:{character.speed}</h4>
-                <h4>proficiency:{character.proficiency}</h4>
-                {/* <h4>AC: {character.armor}</h4> */}
-                <h4>Initiative: {character.initiative}</h4>
-            </Grid>
-                <Grid item xs={6}>
+
+                {character.class_type==='Wizard'||"Warlock"||'Bard'||'Sorcerer'||'Druid'||'Cleric'||'Paladin'||'Ranger' ?<Grid item xs={12}>
+                    <h2>Spells</h2>
                 <SpellsContainer classT={character.class_type} level={character.level}/>
-                </Grid>
-            
+                </Grid>:null}
+                <Grid item xs={12}><p></p></Grid>
         </Grid>
     </Paper>
     </Container>

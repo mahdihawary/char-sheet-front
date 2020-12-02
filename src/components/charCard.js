@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setChar, localSetChar, resetChar, patchCharacter, setId, incLevel, incProf } from '../redux/actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faScroll } from '@fortawesome/free-solid-svg-icons'
 import LevelForm from './levelForm';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +58,7 @@ function CharCard({ character, localResetChar, localSetChar, localPatchCharacter
                                 
                            
                             </Paper>
-                        <NavLink to={`/characters/${character.id}`} exact ><Button variant="outlined">View</Button></NavLink>
+                        <NavLink to={`/characters/${character.id}`} exact ><Button variant="outlined"><FontAwesomeIcon icon={faScroll}/></Button></NavLink>
                         
                         </Grid>
                     </Grid>

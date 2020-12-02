@@ -1,3 +1,4 @@
+import { Button, Grid, Paper } from '@material-ui/core'
 import React from 'react'
 import { connect } from 'react-redux'
 import { setImage, setName } from '../redux/actions'
@@ -18,15 +19,29 @@ function NameForm({  submitHandler, localSetImage,localSetName }) {
         submitHandler()
     }
 
-    return <div>
+    return <Grid container 
+    direction="column"
+        justify="space-between"
+        alignItems="center"
+        >
+    <Paper width={40} className="nameForm" >
         <form onSubmit={e => localSubmitHandler(e)}>
+            <Grid xs={12}>
             <label for="name"  >Name</label>
+            </Grid>
+                <Grid xs={12}>
             <input type="text" name="name" value={name} onChange={e=>nameHandler(e)}/>
+                </Grid>
             <label for="image" >Image</label>
+                <Grid xs={12}>
             <input type="text" name="image" value={image} onChange={e=>imageHandler(e)}/>
-            <button type="submit" >Next</button>
+            </Grid>
+            <Grid xs={12}>
+            <Button type="submit" >Next</Button>
+            </Grid>
         </form>
-    </div>
+    </Paper>
+    </Grid>
 
 }
 const mapDispatchToProps = (dispatch) => { return { localSetName: (charName) => dispatch(setName(charName)), localSetImage: (image) => dispatch(setImage(image))}}

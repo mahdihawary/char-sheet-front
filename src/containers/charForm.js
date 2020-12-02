@@ -12,6 +12,7 @@ import AbilityForm from '../components/abilityForm';
 import NameForm from '../components/nameForm';
 import CharShow from '../components/charShow';
 import ProficiencyContainer from './proficiencyContainer';
+import { Grid, Paper } from '@material-ui/core';
 
 
 const useStyles = makeStyles({
@@ -22,6 +23,7 @@ const useStyles = makeStyles({
 });
 
 function CharForm({character, postChar, resetCharacter}){
+    console.log(character)
     const classes = useStyles();
     // const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -56,24 +58,39 @@ function CharForm({character, postChar, resetCharacter}){
             //     return <ProficiencyContainer submitHandler={handleNext}/>
             case 4:
                 return <div><CharShow character={character} />
-                <Button onClick={createCharacter}><NavLink to="http://localhost:3001/characters">Submit</NavLink></Button> </div>
+                <Paper><Button onClick={createCharacter}><NavLink to="/characters">Submit</NavLink></Button> </Paper></div>
 
             default:
                 break;
         }
     }
 
-        return <div>
+        return <Grid container justify='center' spacing={0}>
+            
+            <Grid xs={12}>
             {displayActive()}
+            </Grid>
+            <Grid xs={12}><p> </p></Grid>
+            <Grid xs={3}>
             <MobileStepper
                 variant="dots"
                 steps={4}
                 position="static"
                 activeStep={activeStep}
                 className={classes.root}
+                nextButton={
+        <Button size="small"  disabled={true}>
+        </Button>
+      }
+      backButton={
+        <Button size="small"  disabled={true}>
+        </Button>
+      }
                 
             /> 
-            </div>
+            </Grid>
+            <Grid xs={12}><p> </p></Grid>
+            </Grid>
 
     
 
