@@ -7,7 +7,8 @@ function ClassForm({ classTypes, character, submitHandler }) {
         return classTypes.map(classT => <ClassCard classT={classT} key={classT.attributes.name} topSubmitHandler={submitHandler} />)
     }
 
-    return <div>{renderRaces()}</div>
+    return <div>{renderRaces()}
+        </div>
 
 }
 const mapStateToProps = (state) => { return ({ classTypes: state.classTypes, character: state.character }) }

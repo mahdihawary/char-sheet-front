@@ -109,7 +109,6 @@ function LevelForm({ localinProf, localCha, character, localCon, localDsi, local
             </Grid>
             
         </Paper>
-        <div className="levelPaper"> </div>
             </Grid>
         </Grid>
     </div>

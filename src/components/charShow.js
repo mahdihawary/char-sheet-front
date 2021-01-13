@@ -90,7 +90,7 @@ function CharShow({character}){
                     <img src={character.image} alt="" className="charImage" />
                 </Grid>
             <Grid item xs={9}>
-                    <Grid container  >
+                    <Grid container justify="center" >
                         <Grid item xs={12}>
                 <h2>Ability Scores</h2>
                 </Grid>
@@ -118,12 +118,19 @@ function CharShow({character}){
                 <h3>CHA </h3>
                 <p>{character.charisma}</p>
                 </Grid>
+                        <Grid xs={4}>
+                            <hr />
+                        </Grid>
+                    
                 </Grid>
+
+                
             </Grid>
 
             <Grid item xs={12}>
+                
                     <h2>Stats</h2>
-                    <Grid container >
+                    <Grid container justify='center'>
                         <Grid xs={3}></Grid>
                         <Grid item xs={3}>
                             <h3>Darkvision</h3>
@@ -133,7 +140,7 @@ function CharShow({character}){
                             <h3>speed:</h3>
                             <p>{character.speed} ft</p>
                         </Grid>
-                        <Grid xs={3}></Grid>
+
                         <Grid xs={3}></Grid>
                         <Grid item xs={3}>
                             <h3>proficiency</h3>
@@ -143,6 +150,9 @@ function CharShow({character}){
                         <Grid item xs={3}>
                             <h3>Initiative</h3>
                             <p>+{Math.floor((character.dexterity - 10) / 2 + character.proficiency) }</p>
+                        </Grid>
+                        <Grid xs={7}>
+                            <hr />
                         </Grid>
                     </Grid>
             </Grid>
@@ -157,7 +167,7 @@ function CharShow({character}){
                 </Grid> */}
                 <Grid item xs={12}>
                     <h2>Skills</h2>
-                    <Grid container>
+                    <Grid container justify='center'>
                     <Grid item xs={3}>
                         <h4>Acrobatics</h4>
                     <p>{proficiencies.includes('acro') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
@@ -222,7 +232,7 @@ function CharShow({character}){
                             <h4>Sleight of Hand</h4>
                     <p>{proficiencies.includes('hand') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
                     </Grid>
-                        <Grid xs={3}></Grid>
+                        
                     <Grid item xs={3}>
                             <h4>Stealth</h4>
                     <p>{proficiencies.includes('stealth') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
@@ -231,6 +241,10 @@ function CharShow({character}){
                             <h4>Survival</h4>
                     <p>{proficiencies.includes('surv') ? Math.floor((character.dexterity - 10) / 2 + character.proficiency) : Math.floor((character.dexterity - 10) / 2)}</p>
                     </Grid>
+
+                        <Grid xs={7}>
+                            <hr />
+                        </Grid>
                     </Grid>
                 </Grid>
 

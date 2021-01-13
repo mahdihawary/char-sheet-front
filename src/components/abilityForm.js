@@ -112,7 +112,6 @@ function AbilityForm({ localCha, character, localCon, localDsi, localInt, localS
                     </Grid>
 
                 </Paper>
-                <div className="levelPaper"> </div>
             </Grid>
         </Grid>
     </div>

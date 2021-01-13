@@ -90,6 +90,7 @@ function CharForm({character, postChar, resetCharacter}){
             /> 
             </Grid>
             <Grid xs={12}><p> </p></Grid>
+            
             </Grid>
 
     

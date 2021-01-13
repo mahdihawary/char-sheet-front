@@ -24,7 +24,7 @@ export const changeChar = (inc) => ({ type: "changeChar", payload: inc })
 
 export const getCharacter=()=>{
     return function(dispatch){
-        fetch("http://localhost:3000/api/v1/characters/1")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/characters/1")
         .then(resp=>resp.json())
         .then(data=>{
             dispatch({type:"fetchChar",payload:data.data.attributes})})
@@ -33,7 +33,7 @@ export const getCharacter=()=>{
 
 export const getSkills = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/skills")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/skills")
             .then(resp => resp.json())
             .then(data => {
                 dispatch({ type: "fetchSkills", payload: data.data })
@@ -43,7 +43,7 @@ export const getSkills = () => {
 
 export const getCharacters = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/users/1")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/users/1")
             .then(resp => resp.json())
             .then(data => {
                 
@@ -54,7 +54,7 @@ export const getCharacters = () => {
 
 export const getSpells = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/spells")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/spells")
             .then(resp => resp.json())
             .then(data => {
                 
@@ -65,7 +65,7 @@ export const getSpells = () => {
 
 export const getCharSpells = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/characters/1")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/characters/1")
             .then(resp => resp.json())
             .then(data => {
                 
@@ -76,7 +76,7 @@ export const getCharSpells = () => {
 
 export const getRaces = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/races")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/races")
             .then(resp => resp.json())
             .then(data => {
                 dispatch({ type: "fetchRaces", payload: data.data })
@@ -86,7 +86,7 @@ export const getRaces = () => {
 
 export const getClasses = () => {
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/class_types")
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/class_types")
             .then(resp => resp.json())
             .then(data => {
                 dispatch({ type: "fetchClasses", payload: data.data })
@@ -97,7 +97,7 @@ export const getClasses = () => {
 export const postCharacter = (char) => {
     
     return function (dispatch) {
-        fetch("http://localhost:3000/api/v1/characters", {
+        fetch("https://char-sheet-backend.herokuapp.com/api/v1/characters", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -138,7 +138,7 @@ export const postCharacter = (char) => {
 export const patchCharacter = (char,charId) => {
     console.log(char,charId)
     return function (dispatch) {
-        fetch(`http://localhost:3000/api/v1/characters/${charId}`, {
+        fetch(`https://char-sheet-backend.herokuapp.com/api/v1/characters/${charId}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json",

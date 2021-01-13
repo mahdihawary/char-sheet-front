@@ -42,6 +42,7 @@ function NameForm({  submitHandler, localSetImage,localSetName }) {
         </form>
     </Paper>
     </Grid>
+    
 
 }
 const mapDispatchToProps = (dispatch) => { return { localSetName: (charName) => dispatch(setName(charName)), localSetImage: (image) => dispatch(setImage(image))}}

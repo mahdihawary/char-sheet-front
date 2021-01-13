@@ -45,6 +45,7 @@ function ClassCard({ classT, topSubmitHandler, localSetClass }) {
                 </AccordionDetails>
                 <Button onClick={submitHandler}>Choose Class</Button>
             </Accordion>
+            
         </div>
     );
 }
