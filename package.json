@@ -1,7 +1,7 @@
 {
   "name": "char-sheet",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/react-gh-pages",
+  "homepage": "https://mahdihawary.github.io/char-sheet-front",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
