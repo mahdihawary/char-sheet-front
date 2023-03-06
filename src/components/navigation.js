@@ -115,7 +115,7 @@ function Navigation({localResetChar}){
                 position="fixed"
             >
                 <Toolbar >
-                    <Box noWrap className={classes.title}><img src={logoDesign} alt='' className="logo"/></Box>
+                    <NavLink to="/"><Box noWrap className={classes.title}><img src={logoDesign} alt='' className="logo"/></Box></NavLink>
                     {/* <Typography variant="h6" noWrap className={classes.title}>ap</Typography> */}
                     {/* <Container width={1/4}><img src={logoDesign} alt='' /></Container> */}
                     
